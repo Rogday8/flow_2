@@ -1,0 +1,136 @@
+@import 'tailwindcss';
+
+@theme {
+  /* Летнее поле: бумага, подсолнух, лес, томат, космея, лаванда, небо */
+  --color-paper: #f4efe3;
+  --color-cream: #fbf8f1;
+  --color-ink: #16261c;
+  --color-moss: #2f4a33;
+  --color-leaf: #6f9a5a;
+  --color-sun: #ffc933;
+  --color-honey: #f5a623;
+  --color-tomato: #ff5b2e;
+  --color-cosmos: #ff7eb6;
+  --color-lilac: #c9b6ff;
+  --color-sky: #bfe0ff;
+
+  --font-display: 'Unbounded', ui-sans-serif, system-ui, sans-serif;
+  --font-sans: 'Onest', ui-sans-serif, system-ui, sans-serif;
+  --font-hand: 'Caveat', cursive;
+
+  --animate-marquee: marquee 30s linear infinite;
+  --animate-marquee-rev: marquee 36s linear infinite reverse;
+  --animate-spin-slow: spin 24s linear infinite;
+  --animate-wiggle: wiggle 3.5s ease-in-out infinite;
+  --animate-bob: bob 6s ease-in-out infinite;
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes wiggle {
+  0%,
+  100% {
+    transform: rotate(-4deg);
+  }
+  50% {
+    transform: rotate(4deg);
+  }
+}
+
+@keyframes bob {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-14px) rotate(2deg);
+  }
+}
+
+@layer base {
+  :root {
+    color-scheme: light;
+  }
+
+  * {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  body {
+    margin: 0;
+    background: var(--color-paper);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    overflow-x: clip;
+  }
+
+  ::selection {
+    background: var(--color-sun);
+    color: var(--color-ink);
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--color-paper);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-ink);
+    border-radius: 999px;
+    border: 3px solid var(--color-paper);
+  }
+
+  img {
+    user-select: none;
+    -webkit-user-drag: none;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+    }
+  }
+}
+
+@utility font-display {
+  font-family: var(--font-display);
+}
+
+@utility font-hand {
+  font-family: var(--font-hand);
+}
+
+/* бумажная фактура поверх секции */
+@utility paper-grain {
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.35;
+    mix-blend-mode: multiply;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3CfeColorMatrix values='0 0 0 0 0.45 0 0 0 0 0.38 0 0 0 0 0.25 0 0 0 0.18 0'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+}
+
+/* тень стикера — как будто наклейка чуть отходит от бумаги */
+@utility sticker {
+  filter: drop-shadow(0 2px 1px rgb(22 38 28 / 0.12)) drop-shadow(0 12px 18px rgb(22 38 28 / 0.18));
+}
+
+@utility edge-fade {
+  mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
+}
