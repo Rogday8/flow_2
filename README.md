@@ -36,3 +36,9 @@ npm run build    # сборка в dist/
 Снимки — StockSnap.io (лицензия CC0, можно коммерчески без указания авторства). Наклейки
 в `src/assets/stickers/` вырезаны из них нейросетью rembg, белая обводка добавлена скриптом.
 Pinterest не использовался: там в основном чужие фото без понятных прав.
+
+## Публикация
+
+Репозиторий: https://github.com/Rogday8/flow_2. При каждом пуше в `main` GitHub Actions собирает сайт
+и выкладывает его на GitHub Pages (Settings → Pages → Source: GitHub Actions).
+Адрес сайта: https://rogday8.github.io/flow_2/
