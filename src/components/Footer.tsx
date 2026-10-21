@@ -82,7 +82,8 @@ export function Footer() {
 
       <div className="flex flex-col items-center justify-between gap-3 bg-ink px-5 py-5 text-xs text-cream/70 sm:flex-row sm:px-8">
         <span className="flex items-center gap-2">
-          <Daisy className="h-5 w-5" /> © {new Date().getFullYear()} ПОЛЕ — цветочная лавка
+          <Daisy className="h-5 w-5" /> © {new Date().getFullYear()} ПОЛЕ — сайт-концепт студии{' '}
+          <a href="https://rogday8.github.io/mir-saitov/" target="_blank" rel="noreferrer" className="hover:text-sun">«Мир сайтов»</a>, все права защищены
         </span>
         <a href="#top" className="hover:text-sun">
           наверх ↑
